@@ -1,112 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Proposal</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(to top, #ff9a9e, #fad0c4);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<title>Forever 💖</title>
 
-    .scene {
-      position: relative;
-      width: 800px;
-      height: 260px;
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(to top, #ff9a9e, #fad0c4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-    svg {
-      position: absolute;
-      bottom: 0;
-      width: 120px;
-      height: 220px;
-      fill: #222;
-    }
+/* START BUTTON */
+button {
+  padding: 14px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4f81;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
 
-    /* Boy walk */
-    .boy {
-      left: 0;
-      animation: boyWalk 4s forwards;
-    }
+/* SCENE */
+.scene {
+  position: relative;
+  width: 800px;
+  height: 260px;
+}
 
-    @keyframes boyWalk {
-      from { left: 0; }
-      to { left: 320px; }
-    }
+/* HUMAN SVG */
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 220px;
+  fill: #222;
+}
 
-    /* Girl YES nod */
-    .girl {
-      right: 80px;
-      animation: girlNod 1s ease-in-out 4.5s 2;
-      transform-origin: center bottom;
-    }
+/* BOY WALK */
+.boy {
+  left: 0;
+  animation: boyWalk 4s forwards;
+}
 
-    @keyframes girlNod {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(4deg); }
-      100% { transform: rotate(0deg); }
-    }
+@keyframes boyWalk {
+  to { left: 320px; }
+}
 
-    /* Heart */
-    .heart {
-      position: absolute;
-      top: 30px;
-      left: 380px;
-      font-size: 40px;
-      opacity: 0;
-      animation: heartPop 1.5s ease-in 4s forwards;
-    }
+/* GIRL YES NOD */
+.girl {
+  right: 80px;
+  animation: girlNod 1s ease-in-out 4.5s 2;
+  transform-origin: center bottom;
+}
 
-    @keyframes heartPop {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1.5); opacity: 1; }
-    }
+@keyframes girlNod {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+  100% { transform: rotate(0deg); }
+}
 
-    /* Proposal text */
-    .text {
-      margin-top: 25px;
-      font-size: 26px;
-      font-weight: bold;
-      min-height: 90px;
-      text-align: center;
-    }
+/* HEART */
+.heart {
+  position: absolute;
+  top: 30px;
+  left: 380px;
+  font-size: 40px;
+  opacity: 0;
+  animation: heartPop 1.5s ease-in 4s forwards;
+}
 
-    .word {
-      display: inline-block;
-      margin: 0 5px;
-      transform: scale(0);
-      animation: pop 0.4s ease-out forwards;
-    }
+@keyframes heartPop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1.5); opacity: 1; }
+}
 
-    @keyframes pop {
-      0% { transform: scale(0); }
-      70% { transform: scale(1.3); }
-      100% { transform: scale(1); }
-    }
+/* TEXT */
+.text {
+  margin-top: 25px;
+  font-size: 26px;
+  font-weight: bold;
+  min-height: 90px;
+}
 
-    .credit {
-      margin-top: 10px;
-      font-style: italic;
-      opacity: 0;
-      animation: creditShow 1.5s ease-in 9s forwards;
-    }
+/* WORD POP */
+.word {
+  display: inline-block;
+  margin: 0 5px;
+  transform: scale(0);
+  animation: pop 0.4s ease-out forwards;
+}
 
-    @keyframes creditShow {
-      to { opacity: 1; }
-    }
-  </style>
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* CREDIT */
+.credit {
+  margin-top: 10px;
+  font-style: italic;
+  opacity: 0;
+  animation: creditShow 1.5s ease-in 9s forwards;
+}
+
+@keyframes creditShow {
+  to { opacity: 1; }
+}
+</style>
 </head>
 
 <body>
 
+<button onclick="startProposal()">▶ Start Proposal</button>
+
+<audio id="bgMusic">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="scene">
 
-  <!-- Boy (Human silhouette SVG) -->
+  <!-- BOY -->
   <svg class="boy" viewBox="0 0 64 128">
     <circle cx="32" cy="12" r="10"/>
     <rect x="26" y="22" width="12" height="38"/>
@@ -116,7 +139,7 @@
     <rect x="32" y="60" width="10" height="40"/>
   </svg>
 
-  <!-- Girl (Human silhouette SVG) -->
+  <!-- GIRL -->
   <svg class="girl" viewBox="0 0 64 128">
     <circle cx="32" cy="12" r="10"/>
     <polygon points="32,22 14,70 50,70"/>
@@ -131,30 +154,25 @@
 </div>
 
 <div class="text" id="proposal"></div>
-
 <div class="credit">— From Asmit 💙</div>
 
 <script>
-  const words = [
-    "Chiku,",
-    "will",
-    "you",
-    "be",
-    "mine",
-    "forever?",
-    "<br>",
-    "Kya",
-    "tum",
-    "meri",
-    "banogi?",
-    "<br>",
-    "Hamesha",
-    "ke",
-    "liye? 🫠🫴🏻"
-  ];
+const words = [
+  "Meri",
+  "banogi",
+  "kya,",
+  "<br>",
+  "meri",
+  "rahogi",
+  "kya? ❤️"
+];
 
-  const box = document.getElementById("proposal");
+function startProposal() {
+  document.querySelector("button").style.display = "none";
+  document.getElementById("bgMusic").play();
+
   let i = 0;
+  const box = document.getElementById("proposal");
 
   function showWords() {
     if (i < words.length) {
@@ -167,12 +185,13 @@
         box.appendChild(span);
       }
       i++;
-      setTimeout(showWords, 350);
+      setTimeout(showWords, 450);
     }
   }
 
-  setTimeout(showWords, 5200);
+  setTimeout(showWords, 5000);
+}
 </script>
 
 </body>
-</html>
+    </html>
