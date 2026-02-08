@@ -1,74 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For You 🌸</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { background-color: #0d0d0d; color: #ff4d6d; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
-        
-        /* Animation Stage */
-        #stage { font-size: 14px; font-weight: bold; white-space: pre; height: 150px; margin-bottom: 20px; position: relative; width: 300px; }
-        
-        #msg { font-size: 1rem; line-height: 1.5; padding: 10px; text-align: center; font-weight: bold; min-height: 100px; }
-        #credit { font-size: 0.9rem; color: #ff8fa3; margin-top: 10px; opacity: 0; transition: opacity 2s; }
-        
-        .pink { color: #ff8fa3; }
-        .red { color: #ff4d6d; text-shadow: 0 0 5px #ff4d6d; }
-    </style>
+  <title>Propose Day 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to top, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .scene {
+      position: relative;
+      width: 600px;
+      height: 200px;
+    }
+
+    .boy, .girl {
+      font-size: 80px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .boy {
+      left: -100px;
+      animation: boyWalk 4s forwards;
+    }
+
+    .girl {
+      right: 50px;
+    }
+
+    @keyframes boyWalk {
+      to {
+        left: 200px;
+      }
+    }
+
+    .heart {
+      font-size: 40px;
+      position: absolute;
+      top: 50px;
+      left: 260px;
+      opacity: 0;
+      animation: heartPop 2s ease-in-out 4s forwards;
+    }
+
+    @keyframes heartPop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1.5); opacity: 1; }
+    }
+
+    .text {
+      margin-top: 40px;
+      font-size: 26px;
+      text-align: center;
+      opacity: 0;
+      animation: textShow 2s ease-in 6s forwards;
+      color: #c2185b;
+      font-weight: bold;
+    }
+
+    @keyframes textShow {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .credit {
+      margin-top: 15px;
+      font-size: 20px;
+      color: #444;
+      opacity: 0;
+      animation: creditShow 2s ease-in 8s forwards;
+      font-style: italic;
+    }
+
+    @keyframes creditShow {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="stage"></div>
-    <div id="msg"></div>
-    <div id="credit"> - From Asmit</div>
+<div class="scene">
+  <div class="boy">👦🏻</div>
+  <div class="girl">👧🏻</div>
+  <div class="heart">❤️</div>
+</div>
 
-    <script>
-        const stage = document.getElementById('stage');
-        const msgTarget = document.getElementById('msg');
-        
-        // Scenes for Animation
-        const scenes = [
-            // 1. Walking
-            "           (Ladki)\n            <pre>  O  </pre>\n  O         <pre> /|\\ </pre>\n /|\\        <pre> / \\ </pre>\n / \\       ",
-            "           (Ladki)\n            <pre>  O  </pre>\n    O       <pre> /|\\ </pre>\n   /|\\      <pre> / \\ </pre>\n   / \\     ",
-            "           (Ladki)\n            <pre>  O  </pre>\n      O     <pre> /|\\ </pre>\n     /|\\    <pre> / \\ </pre>\n     / \\    ",
-            // 2. Reached & Kneeling
-            "           (Ladki)\n            <pre>  O  </pre>\n        O   <pre> /|\\ </pre>\n       /|\\  <pre> / \\ </pre>\n       / \\  ",
-            "           (Ladki)\n            <pre>  O  </pre>\n            <pre> /|\\ </pre>\n        o   <pre> / \\ </pre>\n       /|_  ",
-            "   (Proposing...) \n            <pre>  O  </pre>\n     <span class='red'>❤️</span>     <pre> /|\\ </pre>\n        o   <pre> / \\ </pre>\n       /|_  "
-        ];
+<div class="text">
+  Chiku, will you be mine forever?<br>
+  Kya tum meri banogi?<br>
+  Hamesha ke liye? 🫠🫴🏻
+</div>
 
-        let frame = 0;
-        function playAnimation() {
-            if (frame < scenes.length) {
-                stage.innerHTML = scenes[frame];
-                frame++;
-                setTimeout(playAnimation, 800);
-            } else {
-                startTyping();
-            }
-        }
+<div class="credit">
+  — From Asmit 💙
+</div>
 
-        function startTyping() {
-            let line1 = "KYA TUM PURI ZINDEGI MERI BANKE RAHENA CHAOGI?\n";
-            let line2 = "WILL YOU BE MINE FOR EVER?? 🫠🌸";
-            let fullText = line1 + line2;
-            let j = 0;
-
-            function type() {
-                if(j < fullText.length) {
-                    msgTarget.innerHTML += fullText.charAt(j) === '\n' ? '<br><br>' : fullText.charAt(j);
-                    j++;
-                    setTimeout(type, 80)
-                } else {
-                    document.getElementById('credit').style.opacity = "1";
-                }
-            }
-            type();
-        }
-
-        // Start the show
-        playAnimation();
-    </script>
 </body>
 </html>
