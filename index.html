@@ -4,61 +4,71 @@
     <title>For You 🌸</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { background-color: #0d0d0d; color: #ff4d6d; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
-        pre { font-size: 14px; font-weight: bold; text-shadow: 0 0 10px #ff4d6d; }
-        #msg { font-size: 1.1rem; line-height: 1.6; padding: 10px; min-height: 80px; font-weight: bold; }
-        #credit { font-size: 0.9rem; color: #ff8fa3; margin-top: 20px; opacity: 0; transition: opacity 2s; }
+        body { background-color: #0d0d0d; color: #ff4d6d; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        
+        /* Animation Stage */
+        #stage { font-size: 14px; font-weight: bold; white-space: pre; height: 150px; margin-bottom: 20px; position: relative; width: 300px; }
+        
+        #msg { font-size: 1rem; line-height: 1.5; padding: 10px; text-align: center; font-weight: bold; min-height: 100px; }
+        #credit { font-size: 0.9rem; color: #ff8fa3; margin-top: 10px; opacity: 0; transition: opacity 2s; }
+        
+        .pink { color: #ff8fa3; }
+        .red { color: #ff4d6d; text-shadow: 0 0 5px #ff4d6d; }
     </style>
 </head>
 <body>
-    <pre id="heart"></pre>
+
+    <div id="stage"></div>
     <div id="msg"></div>
     <div id="credit"> - From Asmit</div>
 
     <script>
-        const heartStr = [
-            "  *** *** ",
-            " ***** ***** ",
-            "*************",
-            " *********** ",
-            "  ********* ",
-            "   ******* ",
-            "    ***** ",
-            "     *** ",
-            "      * "
+        const stage = document.getElementById('stage');
+        const msgTarget = document.getElementById('msg');
+        
+        // Scenes for Animation
+        const scenes = [
+            // 1. Walking
+            "           (Ladki)\n            <pre>  O  </pre>\n  O         <pre> /|\\ </pre>\n /|\\        <pre> / \\ </pre>\n / \\       ",
+            "           (Ladki)\n            <pre>  O  </pre>\n    O       <pre> /|\\ </pre>\n   /|\\      <pre> / \\ </pre>\n   / \\     ",
+            "           (Ladki)\n            <pre>  O  </pre>\n      O     <pre> /|\\ </pre>\n     /|\\    <pre> / \\ </pre>\n     / \\    ",
+            // 2. Reached & Kneeling
+            "           (Ladki)\n            <pre>  O  </pre>\n        O   <pre> /|\\ </pre>\n       /|\\  <pre> / \\ </pre>\n       / \\  ",
+            "           (Ladki)\n            <pre>  O  </pre>\n            <pre> /|\\ </pre>\n        o   <pre> / \\ </pre>\n       /|_  ",
+            "   (Proposing...) \n            <pre>  O  </pre>\n     <span class='red'>❤️</span>     <pre> /|\\ </pre>\n        o   <pre> / \\ </pre>\n       /|_  "
         ];
 
-        let i = 0;
-        function draw() {
-            if(i < heartStr.length) {
-                document.getElementById('heart').innerHTML += heartStr[i] + "\n";
-                i++;
-                setTimeout(draw, 300);
+        let frame = 0;
+        function playAnimation() {
+            if (frame < scenes.length) {
+                stage.innerHTML = scenes[frame];
+                frame++;
+                setTimeout(playAnimation, 800);
             } else {
-                setTimeout(showText, 500);
+                startTyping();
             }
         }
 
-        function showText() {
+        function startTyping() {
             let line1 = "KYA TUM PURI ZINDEGI MERI BANKE RAHENA CHAOGI?\n";
             let line2 = "WILL YOU BE MINE FOR EVER?? 🫠🌸";
             let fullText = line1 + line2;
             let j = 0;
-            let target = document.getElementById('msg');
 
             function type() {
                 if(j < fullText.length) {
-                    target.innerHTML += fullText.charAt(j) === '\n' ? '<br><br>' : fullText.charAt(j);
+                    msgTarget.innerHTML += fullText.charAt(j) === '\n' ? '<br><br>' : fullText.charAt(j);
                     j++;
-                    setTimeout(type, 100);
+                    setTimeout(type, 80)
                 } else {
-                    // Show Credit after message ends
                     document.getElementById('credit').style.opacity = "1";
                 }
             }
             type();
         }
-        draw();
+
+        // Start the show
+        playAnimation();
     </script>
 </body>
 </html>
