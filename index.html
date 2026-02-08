@@ -6,7 +6,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(to top, orange, pink);
+      background: linear-gradient(to top, #ff9966, #ff5e62);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -15,13 +15,15 @@
     }
 
     .scene {
-      display: flex;
-      gap: 80px;
-      align-items: center;
+      position: relative;
+      width: 700px;
+      height: 220px;
       margin-bottom: 30px;
     }
 
     .person {
+      position: absolute;
+      bottom: 0;
       width: 60px;
       text-align: center;
     }
@@ -55,6 +57,43 @@
       margin: auto;
     }
 
+    /* Boy walks */
+    .boy {
+      left: 0;
+      animation: boyMove 4s forwards;
+    }
+
+    @keyframes boyMove {
+      from { left: 0; }
+      to { left: 300px; }
+    }
+
+    /* Girl nods YES */
+    .girl {
+      right: 50px;
+      animation: girlNod 1s ease-in-out 4s 2;
+    }
+
+    @keyframes girlNod {
+      0% { transform: rotate(0); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(0); }
+    }
+
+    /* Heart */
+    .heart {
+      position: absolute;
+      top: 30px;
+      left: 330px;
+      font-size: 36px;
+      opacity: 0;
+      animation: heartShow 2s ease-in 4s forwards;
+    }
+
+    @keyframes heartShow {
+      to { opacity: 1; }
+    }
+
     .text {
       font-size: 22px;
       text-align: center;
@@ -62,7 +101,7 @@
     }
 
     .credit {
-      margin-top: 15px;
+      margin-top: 10px;
       font-style: italic;
     }
   </style>
@@ -71,23 +110,25 @@
 <body>
 
 <div class="scene">
-  <div class="person">
+
+  <!-- Boy -->
+  <div class="person boy">
     <div class="head"></div>
     <div class="body"></div>
     <div class="arms"></div>
     <div class="legs"></div>
-    👦
   </div>
 
-  <div style="font-size:40px;">❤️</div>
-
-  <div class="person">
+  <!-- Girl -->
+  <div class="person girl">
     <div class="head"></div>
     <div class="body"></div>
     <div class="arms"></div>
     <div class="legs"></div>
-    👧
   </div>
+
+  <div class="heart">❤️</div>
+
 </div>
 
 <div class="text">
