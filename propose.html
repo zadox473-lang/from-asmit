@@ -1,163 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Forever 💖</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(to top, #ff9966, #ff5e62);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<title>Forever 💖</title>
 
-    /* Sun */
-    .sun {
-      position: absolute;
-      bottom: 80px;
-      width: 120px;
-      height: 120px;
-      background: #ffd54f;
-      border-radius: 50%;
-      box-shadow: 0 0 40px rgba(255,213,79,0.8);
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(to top, #ff9966, #ff5e62);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    .scene {
-      position: relative;
-      width: 800px;
-      height: 300px;
-    }
+/* SUNSET SUN */
+.sun {
+  position: absolute;
+  bottom: 90px;
+  width: 120px;
+  height: 120px;
+  background: #ffd54f;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255,213,79,0.8);
+}
 
-    .person {
-      position: absolute;
-      bottom: 0;
-      width: 90px;
-      height: 180px;
-    }
+/* SCENE */
+.scene {
+  position: relative;
+  width: 800px;
+  height: 300px;
+}
 
-    .head {
-      width: 42px;
-      height: 42px;
-      border: 4px solid #111;
-      border-radius: 50%;
-      margin: auto;
-    }
+/* PERSON */
+.person {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 180px;
+}
 
-    .body {
-      width: 5px;
-      height: 65px;
-      background: #111;
-      margin: auto;
-    }
+.head {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #111;
+  border-radius: 50%;
+  margin: auto;
+}
 
-    .arms {
-      width: 65px;
-      height: 5px;
-      background: #111;
-      margin: 12px auto;
-    }
+.body {
+  width: 5px;
+  height: 60px;
+  background: #111;
+  margin: auto;
+}
 
-    .legs {
-      width: 5px;
-      height: 55px;
-      background: #111;
-      margin: auto;
-    }
+.arms {
+  width: 60px;
+  height: 5px;
+  background: #111;
+  margin: 12px auto;
+}
 
-    /* Boy animation */
-    .boy {
-      left: -150px;
-      animation: walkIn 4s ease-in-out forwards, kneel 1s ease-in-out 4s forwards;
-    }
+.legs {
+  width: 5px;
+  height: 50px;
+  background: #111;
+  margin: auto;
+}
 
-    @keyframes walkIn {
-      to { left: 330px; }
-    }
+/* BOY WALK + KNEEL */
+.boy {
+  left: -120px;
+  animation: walk 4s ease-in-out forwards;
+}
 
-    @keyframes kneel {
-      to { transform: translateY(18px) scaleY(0.95); }
-    }
+@keyframes walk {
+  0% { left: -120px; }
+  70% { left: 330px; }
+  100% { left: 330px; transform: translateY(18px) scaleY(0.95); }
+}
 
-    /* Girl YES nod */
-    .girl {
-      right: 150px;
-      animation: yesNod 1.2s ease-in-out 6s forwards;
-    }
+/* GIRL YES NOD */
+.girl {
+  right: 150px;
+  animation: nod 1.2s ease-in-out 5.5s forwards;
+}
 
-    @keyframes yesNod {
-      0% { transform: rotate(0); }
-      50% { transform: rotate(4deg); }
-      100% { transform: rotate(0); }
-    }
+@keyframes nod {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
 
-    /* Heart response */
-    .heart {
-      position: absolute;
-      top: 40px;
-      left: 390px;
-      font-size: 45px;
-      opacity: 0;
-      animation: heartPop 2s ease-in-out 5s forwards;
-    }
+/* HEART RESPONSE */
+.heart {
+  position: absolute;
+  top: 40px;
+  left: 380px;
+  font-size: 42px;
+  opacity: 0;
+  animation: heartPop 2s ease-in-out 5s forwards;
+}
 
-    @keyframes heartPop {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1.6); opacity: 1; }
-    }
+@keyframes heartPop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1.5); opacity: 1; }
+}
 
-    /* Hug / Hand holding */
-    .hug {
-      position: absolute;
-      bottom: 0;
-      left: 350px;
-      width: 100px;
-      height: 180px;
-      opacity: 0;
-      animation: hugShow 2s ease-in-out 7s forwards;
-    }
+/* TEXT */
+.text {
+  margin-top: 30px;
+  font-size: 26px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  opacity: 0;
+  animation: textShow 2s ease-in 6.5s forwards;
+}
 
-    @keyframes hugShow {
-      to { opacity: 1; }
-    }
+@keyframes textShow {
+  to { opacity: 1; }
+}
 
-    .text {
-      margin-top: 35px;
-      font-size: 26px;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      opacity: 0;
-      animation: textShow 2s ease-in 6s forwards;
-    }
+/* CREDIT */
+.credit {
+  margin-top: 15px;
+  font-size: 20px;
+  color: white;
+  font-style: italic;
+  opacity: 0;
+  animation: creditShow 2s ease-in 8.5s forwards;
+}
 
-    @keyframes textShow {
-      to { opacity: 1; }
-    }
-
-    .credit {
-      margin-top: 15px;
-      font-size: 20px;
-      color: #fff;
-      font-style: italic;
-      opacity: 0;
-      animation: creditShow 2s ease-in 9s forwards;
-    }
-
-    @keyframes creditShow {
-      to { opacity: 1; }
-    }
-  </style>
+@keyframes creditShow {
+  to { opacity: 1; }
+}
+</style>
 </head>
+
 <body>
 
 <div class="sun"></div>
 
 <div class="scene">
-  <!-- Boy -->
+
+  <!-- BOY -->
   <div class="person boy">
     <div class="head"></div>
     <div class="body"></div>
@@ -165,7 +156,7 @@
     <div class="legs"></div>
   </div>
 
-  <!-- Girl -->
+  <!-- GIRL -->
   <div class="person girl">
     <div class="head"></div>
     <div class="body"></div>
@@ -173,14 +164,9 @@
     <div class="legs"></div>
   </div>
 
-  <!-- Hearts -->
-  <div class="heart">❤️❤️</div>
+  <!-- HEART -->
+  <div class="heart">❤️</div>
 
-  <!-- Hug silhouette -->
-  <div class="hug">
-    <div class="head"></div>
-    <div class="body"></div>
-  </div>
 </div>
 
 <div class="text">
@@ -194,4 +180,4 @@
 </div>
 
 </body>
-  </html>
+</html>
